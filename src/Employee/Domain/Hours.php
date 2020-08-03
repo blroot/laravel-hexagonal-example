@@ -10,11 +10,11 @@ final class Hours
     /**
      * @var int
      */
-    private $hours;
+    private int $hours;
 
     public function __construct(int $hours)
     {
-        $this->hours = $this->setHours($hours);
+        $this->setHours($hours);
     }
 
     /**
@@ -32,8 +32,8 @@ final class Hours
     {
         if ($hours > 0) {
             $this->hours = $hours;
+        } else {
+            throw new IncorrectHours("");
         }
-
-        throw new IncorrectHours("");
     }
 }

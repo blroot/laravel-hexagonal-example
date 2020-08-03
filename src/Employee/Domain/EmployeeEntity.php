@@ -17,6 +17,7 @@ final class EmployeeEntity
         $this->id = $id;
         $this->hoursWorker = $hoursWorker;
         $this->pricePerHour = $pricePerHour;
+        $this->calculateSalary($hoursWorker);
     }
 
     public static function fromArray(array $data): self
@@ -24,7 +25,7 @@ final class EmployeeEntity
         return new self(
             new EmployeeId($data['id']),
             new Hours($data['hoursWorker']),
-            new Money($data['pricePerHour'])
+            new Money($data['pricePerHour']),
         );
     }
 
@@ -73,7 +74,7 @@ final class EmployeeEntity
             'id' => $this->id()->value(),
             'hoursWorker' => $this->hoursWorker()->getHours(),
             'salary' => $this->salary()->value(),
-            'pricePerHours' => $this->pricePerHour()->value()
+            'pricePerHour' => $this->pricePerHour()->value()
         ];
     }
 }
