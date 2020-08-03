@@ -45,12 +45,15 @@ class UpdateSalaryUseCaseTest extends TestCase
 
     public function whenUpdateSalary(): void
     {
+        $new_hours_worked = 9;
+        $employee_id = 1;
         $this->repository->save($this->employee);
-        $this->update_salary_use_case->execute(1, 9);
+        $this->update_salary_use_case->execute($employee_id, $new_hours_worked);
     }
 
     public function thenEmployeeHasDifferentSalary(): void
     {
-        $this->assertEquals(120, $this->employee->salary()->value());
+        $expected_salary = 120;
+        $this->assertEquals($expected_salary, $this->employee->salary()->value());
     }
 }
