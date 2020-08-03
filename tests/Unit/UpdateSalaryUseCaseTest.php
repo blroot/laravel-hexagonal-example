@@ -19,7 +19,7 @@ class UpdateSalaryUseCaseTest extends TestCase
     private InMemoryEmployeeRepository $repository;
     private UpdateSalaryUseCase $update_salary_use_case;
 
-    public function test_se_actualiza_el_sueldo()
+    public function test_si_se_actualiza_el_sueldo_cambia_el_salario_del_empleado()
     {
         $this->givenAnEmployee();
         $this->givenAUseCase();
